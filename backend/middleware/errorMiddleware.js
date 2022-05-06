@@ -1,13 +1,7 @@
-const errorHandler = (err, res, req, next) => {
-    const statusCode = res.statusCode ? res.statusCode : 500
-
-    res.status(statusCode)
-
-    res.json({
-        message: err.message,
-        stack: process.env.NODE_ENV === "production" ? null : err.stack
-    })
-}
+const errorHandler = (req, res) => res.status(500).json({
+    message: "Something went wrong",
+    status: 500
+});
 
 module.exports = {
     errorHandler,
